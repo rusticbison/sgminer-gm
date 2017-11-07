@@ -314,7 +314,7 @@ void sha256_hash512(unsigned char *hash, const unsigned char *data)
 	sha256_init(S);
 
 	memcpy(T, data, 64);
-	
+
 	for (i = 0; i < 16; i++)
 		T[i] = be32dec(T + i);
 	sha256_transform(S, T, 0);
@@ -331,17 +331,17 @@ void sha256_hash512(unsigned char *hash, const unsigned char *data)
 		be32enc((uint32_t *)hash + i, S[i]);
 }
 
-inline void pluckrehash(void *state, const void *input)
+void pluckrehash(void *state, const void *input)
 {
 
 	int i,j;
 	uint32_t data[20];
-	
+
 	const int HASH_MEMORY = 128 * 1024;
 	uint8_t * scratchbuf = (uint8_t*)malloc(HASH_MEMORY);
 	memcpy(data,input,80);
 
-	uint8_t hashbuffer[128*1024]; //don't allocate this on stack, since it's huge.. 
+	uint8_t hashbuffer[128*1024]; //don't allocate this on stack, since it's huge..
 	int size = HASH_MEMORY;
 	memset(hashbuffer, 0, 64);
 	sha256_hash(&hashbuffer[0], (uint8_t*)data, 80);
@@ -368,13 +368,13 @@ inline void pluckrehash(void *state, const void *input)
 		//use the last hash value as the seed
 		for (j = 32; j < 64; j += 4)
 		{
-			uint32_t rand = randbuffer[(j - 32) / 4] % (randmax - 32); 
+			uint32_t rand = randbuffer[(j - 32) / 4] % (randmax - 32);
 			joint[j / 4] = *((uint32_t*)&hashbuffer[rand]);
-			
+
 		}
 		sha256_hash512(&hashbuffer[i], (uint8_t*)joint);
-		
-		memcpy(randseed, &hashbuffer[i - 32], 64); 
+
+		memcpy(randseed, &hashbuffer[i - 32], 64);
 		if (i>128)
 		{
 			memcpy(randbuffer, &hashbuffer[i - 128], 64);
@@ -391,9 +391,9 @@ inline void pluckrehash(void *state, const void *input)
 		}
 	}
 
-	
+
 	//printf("cpu hashbuffer %08x nonce %08x\n", ((uint32_t*)hashbuffer)[7],data[19]);
-		
+
 	memcpy(state, hashbuffer, 32);
 }
 
@@ -433,7 +433,7 @@ void pluck_regenhash(struct work *work)
         uint32_t *ohash = (uint32_t *)(work->hash);
 
         be32enc_vect(data, (const uint32_t *)work->data, 19);
-        data[19] = htobe32(*nonce);	
+        data[19] = htobe32(*nonce);
 
         pluckrehash(ohash, data);
 }

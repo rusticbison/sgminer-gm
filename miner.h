@@ -47,7 +47,7 @@ extern char *curly;
 #ifdef __APPLE_CC__
 #include <OpenCL/opencl.h>
 #else
-#include <CL/cl.h>
+<OpenCL/cl.h>
 #endif
 
 #ifdef STDC_HEADERS

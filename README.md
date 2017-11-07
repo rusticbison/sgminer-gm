@@ -53,6 +53,14 @@ Mandatory:
 * [libtool](http://www.gnu.org/software/libtool/)
 * [AMD APP SDK](http://developer.amd.com/tools-and-sdks/heterogeneous-computing/amd-accelerated-parallel-processing-app-sdk/downloads/)	- available under various names as a package on different GNU/Linux distributions
 
+OSX:
+* brew install openssl (or 'brew upgrade openssl')
+* brew install pkg-config
+* brew install libtool
+* brew install gcc
+* Replace all in project: #include <CL/cl.h> with #include <OpenCL/cl.h>
+
+
 Optional:
 
 * curses dev library - `libncurses5-dev` on Debian or `libpdcurses` on WIN32, for text user interface
@@ -85,6 +93,14 @@ Then:
     autoreconf -i
     CFLAGS="-O2 -Wall -march=native -std=gnu99" ./configure <options>
     make
+
+    OSX:
+    * git submodule init
+    * git submodule update
+    * autoreconf -i
+    * CFLAGS="-O2 -Wall -march=native -std=gnu99" ./configure
+    * make
+
 
 To compile a version that can be used accross machines, remove
 `-march=native`.

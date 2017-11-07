@@ -35,7 +35,7 @@
 #include "sph/sph_blake.h"
 #include "sph/sph_groestl.h"
 #include "sph/sph_skein.h"
-#include "sph/sph_keccak.h" 
+#include "sph/sph_keccak.h"
 #include "sph/sph_bmw.h"
 #include "sph/sph_cubehash.h"
 #include "lyra2.h"
@@ -54,7 +54,7 @@ be32enc_vect(uint32_t *dst, const uint32_t *src, uint32_t len)
 }
 
 
-inline void lyra2rev2hash(void *state, const void *input)
+void lyra2rev2hash(void *state, const void *input)
 {
     sph_blake256_context     ctx_blake;
     sph_bmw256_context       ctx_bmw;
@@ -169,6 +169,3 @@ bool scanhash_lyra2rev2(struct thr_info *thr, const unsigned char __maybe_unused
 
 	return ret;
 }
-
-
-

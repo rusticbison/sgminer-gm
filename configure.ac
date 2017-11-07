@@ -148,7 +148,7 @@ AC_LINK_IFELSE(
 		#ifdef __APPLE_CC__
 		#include <OpenCL/opencl.h>
 		#else
-		#include <CL/cl.h>
+		<OpenCL/cl.h>
 		#endif
 	]],
 	[[return clSetKernelArg(0, 0, 0, 0); ]])],
