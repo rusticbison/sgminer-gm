@@ -47,24 +47,10 @@ submit a pull request.
 ### Dependencies
 
 Mandatory:
-
-* [curl dev library](http://curl.haxx.se/libcurl/) - `libcurl4-openssl-dev` on Debian
-* [pkg-config](http://www.freedesktop.org/wiki/Software/pkg-config)
-* [libtool](http://www.gnu.org/software/libtool/)
-* [AMD APP SDK](http://developer.amd.com/tools-and-sdks/heterogeneous-computing/amd-accelerated-parallel-processing-app-sdk/downloads/)	- available under various names as a package on different GNU/Linux distributions
-
-OSX:
 * brew install openssl (or 'brew upgrade openssl')
 * brew install pkg-config
 * brew install libtool
 * brew install gcc
-* Replace all in project: #include <CL/cl.h> with #include <OpenCL/cl.h>
-
-
-Optional:
-
-* curses dev library - `libncurses5-dev` on Debian or `libpdcurses` on WIN32, for text user interface
-* [AMD ADL SDK](http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/) - version 6, required for ATI GPU monitoring & clocking
 
 If building from git:
 
