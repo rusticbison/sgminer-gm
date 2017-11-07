@@ -65,15 +65,8 @@ AMD APP SDK and AMD ADL SDK must be downloaded from the amd websites.
 
 If needed, place include headers (`*.h` files) from `ADL_SDK_*<VERSION>*.zip` in `sgminer/ADL_SDK`.
 
-Then:
+OSX Specific:
 
-    git submodule init
-    git submodule update
-    autoreconf -i
-    CFLAGS="-O2 -Wall -march=native -std=gnu99" ./configure <options>
-    make
-
-    OSX:
     * git submodule init
     * git submodule update
     * autoreconf -i
