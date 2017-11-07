@@ -47,15 +47,8 @@ submit a pull request.
 ### Dependencies
 
 Mandatory:
-* brew install openssl (or 'brew upgrade openssl')
-* brew install pkg-config
-* brew install libtool
-* brew install gcc
-
-If building from git:
-
-* autoconf
-* automake
+* brew install openssl pkg-config libtool gcc automake
+* brew upgrade openssl pkg-config libtool gcc automake
 
 sgminer-specific configuration options:
 
